@@ -1,7 +1,9 @@
 package com.example.cdv
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +33,13 @@ class MainActivity : AppCompatActivity() {
 
         savedInstanceState?.getString(CAMPO_DINAMICO).let {
             dinamicoEt.setText(it)
+        }
+
+        val button: Button = findViewById(R.id.outra_tela_bt)
+        button.setOnClickListener{
+            Intent(this, OtherActivity::class.java).let {
+                startActivity(it)
+            }
         }
 
     }
