@@ -2,6 +2,8 @@ package com.example.cdv
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Log.v(CDV_TAG, "onCreate: Iniciando ciclo COMPLETO")
 
+        val dinamicoEt = EditText(this)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        dinamicoEt.layoutParams = params
+
+        val linearLayout = findViewById<LinearLayout>(R.id.main)
+        linearLayout.addView(dinamicoEt)
     }
 
     override fun onStart() {
