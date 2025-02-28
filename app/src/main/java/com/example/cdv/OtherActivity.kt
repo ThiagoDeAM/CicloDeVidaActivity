@@ -2,37 +2,18 @@ package com.example.cdv
 
 import android.os.Bundle
 import android.util.Log
-import android.widget.EditText
-import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class OtherActivity : AppCompatActivity() {
     private val CDV_TAG = "CDV_TAG"
-    private val CAMPO_DINAMICO = "CAMPO_DINAMICO"
-    private lateinit var dinamicoEt: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_other)
         Log.v(CDV_TAG, "onCreate ${this.localClassName}: Iniciando ciclo COMPLETO")
-
-        dinamicoEt = EditText(this)
-        val params = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
-            LinearLayout.LayoutParams.WRAP_CONTENT
-        )
-        dinamicoEt.layoutParams = params
-
-        val linearLayout = findViewById<LinearLayout>(R.id.main)
-        linearLayout.addView(dinamicoEt)
-
-        savedInstanceState?.getString(CAMPO_DINAMICO).let {
-            dinamicoEt.setText(it)
-        }
-
     }
 
     override fun onStart() {
@@ -70,18 +51,4 @@ class MainActivity : AppCompatActivity() {
         // Executado antes do onStart, não inicia ciclo nenhum
         Log.v(CDV_TAG, "onRestart ${this.localClassName}: Preparando execução do onStart")
     }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        outState.putString(CAMPO_DINAMICO, dinamicoEt.text.toString())
-        Log.v(CDV_TAG, "onSaveInstanceState ${this.localClassName}: Salvando dados de instância ${this.hashCode()}")
-    }
-
-    /*
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        dinamicoEt.setText(savedInstanceState.getString(CAMPO_DINAMICO))
-        Log.v(CDV_TAG, "onRestoreInstanceState ${this.localClassName}: Restaurando dados de instância ${this.hashCode()}")
-    }
-    */
 }
