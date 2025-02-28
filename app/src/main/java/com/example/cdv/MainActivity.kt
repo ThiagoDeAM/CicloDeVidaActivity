@@ -46,4 +46,10 @@ class MainActivity : AppCompatActivity() {
         // Final do ciclo de vida completo, executado uma única vez por instância
         Log.v(CDV_TAG, "onDestroy: Finalizando ciclo COMPLETO")
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        // Executado antes do onStart, não inicia ciclo nenhum
+        Log.v(CDV_TAG, "onRestart: Preparando execução do onStart")
+    }
 }
